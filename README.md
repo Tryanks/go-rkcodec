@@ -56,3 +56,7 @@ func main() {
 }
 
 ```
+
+# Dev Reference
+
+[Rockchip_Developer_Guide_MPP](https://github.com/rockchip-linux/mpp/blob/develop/doc/Rockchip_Developer_Guide_MPP_EN.md)
