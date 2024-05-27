@@ -15,8 +15,8 @@ import "C"
 
 func NewMppPacket() (*MppPacket, MppRet) {
 	cPacket := C.MppPacket(nil)
-	ret := MppRet(C.mpp_packet_new(cPacket))
-	return &MppPacket{c: cPacket}, ret
+	ret := MppRet(C.mpp_packet_new(&cPacket))
+	return &MppPacket{c: &cPacket}, ret
 }
 
 func (packet *MppPacket) Init(data []byte, size int64) MppRet {
