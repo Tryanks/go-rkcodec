@@ -14,12 +14,11 @@ void MppPktSeg_setType(MppPktSeg seg, RK_S32 type) {
 import "C"
 
 func NewMppPacket() (*MppPacket, MppRet) {
-	packet := new(MppPacket)
-	ret := MppRet(C.mpp_packet_new(packet.c))
-	return packet, ret
+	cPacket := C.MppPacket(nil)
+	ret := MppRet(C.mpp_packet_new(cPacket))
+	return &MppPacket{c: cPacket}, ret
 }
 
-// MPP_RET mpp_packet_init(MppPacket *packet, void *data, size_t size);
 func (packet *MppPacket) Init(data []byte, size int64) MppRet {
 	return MppRet(C.mpp_packet_init(packet.c, C.CBytes(data), C.size_t(size)))
 }

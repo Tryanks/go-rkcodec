@@ -375,9 +375,9 @@ const (
 )
 
 func MppFrameInit() (*MppFrame, MppRet) {
-	frame := new(MppFrame)
-	ret := MppRet(C.mpp_frame_init(frame.c))
-	return frame, ret
+	cFrame := C.MppFrame(nil)
+	ret := MppRet(C.mpp_frame_init(&cFrame))
+	return &MppFrame{c: cFrame}, ret
 }
 
 func (f *MppFrame) Deinit() MppRet {
