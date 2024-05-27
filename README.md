@@ -2,7 +2,9 @@
 
 A cgo package for [rkmpp](https://github.com/rockchip-linux/mpp) media library.
 
-Need **rkmpp** enviorment.
+Need **rockchip/mpp** enviorment.
+
+A recommended tutorial is to follow the guidance on [ffmpeg-rockchip#Compilation](https://github.com/nyanmisaka/ffmpeg-rockchip/wiki/Compilation#Examples).
 
 ```shell
 pkg-config --cflags rockchip_mpp
@@ -20,7 +22,7 @@ go get -u github.com/Tryanks/go-rkcodec
 package main
 
 import "C"
-import "rkcodec"
+import "github.com/Tryanks/go-rkcodec"
 
 func main() {
 	decoder := rkcodec.NewMppCodec()
