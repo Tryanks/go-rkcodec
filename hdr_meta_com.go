@@ -6,11 +6,11 @@ import "C"
 type HdrCodecType = C.HdrCodecType
 
 const (
-	HdrAVS2     = HdrCodecType(C.HDR_AVS2)
-	HdrHEVC     = HdrCodecType(C.HDR_HEVC)
-	HdrH264     = HdrCodecType(C.HDR_H264)
-	HdrAV1      = HdrCodecType(C.HDR_AV1)
-	HdrCodecBut = HdrCodecType(C.HDR_CODEC_BUT)
+	HdrCodecUnspecified = HdrCodecType(C.HDR_CODEC_UNSPECIFIED)
+	HdrAVS2             = HdrCodecType(C.HDR_AVS2)
+	HdrHEVC             = HdrCodecType(C.HDR_HEVC)
+	HdrH264             = HdrCodecType(C.HDR_H264)
+	HdrAV1              = HdrCodecType(C.HDR_AV1)
 )
 
 type HdrFormat = C.HdrFormat
@@ -233,6 +233,6 @@ func (m *RkMetaHdrHeader) SetVideoFormat(v uint16) {
 	m.c.video_format = cU16(v)
 }
 
-func (f *MppFrame) FillHdrMeta(t HdrCodecType) {
-	C.fill_hdr_meta_to_frame(*f.c, C.HdrCodecType(t))
+func (f *MppFrame) FillHdrMeta(t MppCodingType) {
+	C.fill_hdr_meta_to_frame(*f.c, C.MppCodingType(t))
 }
